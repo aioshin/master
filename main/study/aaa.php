@@ -3,4 +3,4 @@
 	$aaa;
 	$aaa = 1000;
 	echo $$bb;
-	#rensyu
+	#rensyu aa
