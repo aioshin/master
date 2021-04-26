@@ -4,7 +4,7 @@ class Samples
 {
   public function getXXX()
   {
-//false$B$@$C$?>l9g$O(B
+//falseだった場合は
 		return true;
   }
 }

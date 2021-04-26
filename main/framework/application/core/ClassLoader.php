@@ -6,7 +6,7 @@ class ClassLoader
 
 	public function register()
 	{
-		sql_autoload_register(array($this, 'loadClass')); //$B$3$3$G$O(Barray$B4X?t$GG[Ns$r@8@.$7$F$=$l$r0z?t$H$7$F=hM}$9$k!"$H$$$&$3$H$r$7$F$$$k(B
+		sql_autoload_register(array($this, 'loadClass')); //ここではarray関数で配列を生成してそれを引数として処理する、ということをしている
 	}
 
 	public function registerDir($dir)

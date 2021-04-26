@@ -9,6 +9,7 @@ abstract class Application
 	protected $db_manager;
 	protected $login_action = array();
 
+	//コメント
 	public function __construct($debug = false)
 	{
 		$this->setDebugMode($debug);
@@ -20,7 +21,7 @@ abstract class Application
 	{
 		try {
 			$params = $this->router->resolve($this->request->getPathInfo());
-			//request$B$G<u$1<h$C$?%Q%9>pJs$r(Bresolve$B$KEO$9$3$H$G%k!<%F%#%s%0@h$rF~<j(B
+			//requestで受け取ったパス情報をresolveに渡すことでルーティング先を入手
 			if($params === false){
 				//todo-A
 				throw new HttpNotFoundException('No route found for '. $this->request->getPathInfo());
@@ -100,8 +101,8 @@ EOF
 	{
 		if($debug){
 			$this->debug = true;
-			ini_set('display_errors', 1);			//ini_set$B$O(Bphp.ini$B$N@_Dj$rF0E*$KJQ99$9$k4X?t!#$3$N>l9g%(%i!<$r(Bhtml$B$KI=<($7$J$$%*%W%7%g%s$rM-8z2=(B
-			error_reporting(-1);							//error_reporting$B$O%(%i!<I=<(@_DjMQ4X?t!#(B-1$B$N0z?t$OA4$FI=<($N0U(B
+			ini_set('display_errors', 1);			//ini_setはphp.iniの設定を動的に変更する関数。この場合エラーをhtmlに表示しないオプションを有効化
+			error_reporting(-1);							//error_reportingはエラー表示設定用関数。-1の引数は全て表示の意
 		}
 		else{
 			$this->debug = false;
@@ -115,7 +116,7 @@ EOF
 		$this->response = new Response();
 		$this->session = new Session();
 		$this->db_manager = new DbManager();
-		$this->router = new Router($this->registerRoutes());		//this$B$H$+$D$1$F$k$1$I(B$router$B$J$s$FDj5A$7$F$J$$$,!D(B
+		$this->router = new Router($this->registerRoutes());		//thisとかつけてるけど$routerなんて定義してないが…
 	}
 
 	protected function configure()

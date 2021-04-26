@@ -30,6 +30,7 @@ class Router
 		return $routes;
 	}
 
+	//コメント
 	public function resolve($path_info)
 	{
 		if('/' !== substr($path_info, 0, 1)){

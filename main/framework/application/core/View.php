@@ -22,17 +22,17 @@ class View
 		$_file = $this->base_dir . '/' . $_path . '.php';
 
 		extract(array_merge($this->defaults, $_variables));
-		//extract()$B$OO"A[G[Ns$r0z?t$H$7$F!"$=$N(BKey$B$rJQ?tL>!"(Bvalue$B$rCM$r$H$7$FJQ?t$rDj5A$9$k4X?t(B
+		//extract()は連想配列を引数として、そのKeyを変数名、valueを値をとして変数を定義する関数
 
 		ob_start();
-		//view$B$G$O=PNO7k2L$r$=$N>l$G=P$9$N$G$O$J$/%l%9%]%s%9$K4^$a$k$?$a$K%"%&%H%W%C%H%P%C%U%!%j%s%0$H$$$&5!G=$rMQ$$$k(B
-		//ob_start$B$O$=$N3+;O$N9g?^$N4X?t(B
+		//viewでは出力結果をその場で出すのではなくレスポンスに含めるためにアウトプットバッファリングという機能を用いる
+		//ob_startはその開始の合図の関数
 
-		ob_implicit_flush(false);			//$B<+F0%U%i%C%7%e$r(BOFF
+		ob_implicit_flush(false);			//自動フラッシュをOFF
 		
 		require $_file;
 
-		$content = ob_get_clean();		//$BCf?H$r=PNO!u%P%C%U%!%j%s%0%*%U(B
+		$content = ob_get_clean();		//中身を出力＆バッファリングオフ
 
 		if($_layout){
 			$content = $this->render($_layout, array_merge($this->layout_variables, array('_content'=>$content,)));
