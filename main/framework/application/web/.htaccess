@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	# 条件：リクエストされたファイル名が存在しなかったら
+	RewriteRule ^(.*)$ index.php [QSA,L]
+	# 処理：もともとのクエリパラメータを活かしつつ、index.phpに書き換える(QSA)
+</IfModule>
